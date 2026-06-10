@@ -1081,23 +1081,35 @@ section {
 }
 
 .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
 }
 
 .skill-badge {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 10px;
-    padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.02);
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.01);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
     font-size: 0.95rem;
     font-weight: 500;
     transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
     cursor: default;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-badge-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
 .skill-badge i {
@@ -1106,15 +1118,48 @@ section {
     transition: color var(--transition-fast);
 }
 
+.skill-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+    position: relative;
+    margin-top: 4px;
+}
+
+.skill-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--text-primary);
+    box-shadow: 0 0 8px var(--text-primary);
+    border-radius: var(--border-radius-full);
+    transition: width 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .skill-badge:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.04);
     border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: var(--glow-soft);
 }
 
 .skill-badge:hover i {
     color: var(--accent);
+}
+
+/* Custom project card screenshot */
+.project-img-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: grayscale(100%) brightness(80%) contrast(110%);
+}
+
+.project-card:hover .project-img-screenshot {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(100%) contrast(100%);
 }
 
 @media (min-width: 769px) {

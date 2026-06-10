@@ -375,4 +375,169 @@ document.addEventListener("DOMContentLoaded", () => {
             showToast("Resume Download Started", "fa-solid fa-download");
         });
     }
+
+    // ==========================================================================
+    // 13. CUSTOM INTERACTIVE CANVAS PARTICLES
+    // ==========================================================================
+    const particleContainer = document.getElementById("particles-container");
+    if (particleContainer) {
+        const canvas = document.createElement("canvas");
+        canvas.style.position = "absolute";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.pointerEvents = "none";
+        particleContainer.appendChild(canvas);
+        const ctx = canvas.getContext("2d");
+        let particlesArray = [];
+        let mouse = { x: null, y: null, radius: 120 };
+
+        function setCanvasSize() {
+            canvas.width = particleContainer.offsetWidth;
+            canvas.height = particleContainer.offsetHeight;
+        }
+        setCanvasSize();
+        window.addEventListener("resize", setCanvasSize);
+
+        particleContainer.addEventListener("mousemove", (e) => {
+            const rect = particleContainer.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        particleContainer.addEventListener("mouseleave", () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = this.x - mouse.x;
+                    let dy = this.y - mouse.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = dx / distance;
+                        let directionY = dy / distance;
+                        this.x += directionX * force * 2;
+                        this.y += directionY * force * 2;
+                    }
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = Math.min(80, Math.floor((canvas.width * canvas.height) / 20000));
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        initParticles();
+        window.addEventListener("resize", initParticles);
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        function connectParticles() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a + 1; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 110) {
+                        let opacity = 1.0 - (distance / 110);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.08})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        animateParticles();
+    }
+
+    // ==========================================================================
+    // 14. DYNAMIC SKILL PROGRESS FILL ON VIEWPORT ENTER
+    // ==========================================================================
+    const skillBadges = document.querySelectorAll(".skill-badge");
+    if (skillBadges.length > 0) {
+        const skillObserverOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const badge = entry.target;
+                    const percent = badge.getAttribute("data-percent");
+                    const progressFill = badge.querySelector(".skill-progress-fill");
+                    if (progressFill) {
+                        progressFill.style.width = `${percent}%`;
+                    }
+                    observer.unobserve(badge);
+                }
+            });
+        }, skillObserverOptions);
+
+        skillBadges.forEach(badge => {
+            skillObserver.observe(badge);
+        });
+    }
+
+    // ==========================================================================
+    // 15. PREMIUM MAGNETIC HOVER INTERACTIONS
+    // ==========================================================================
+    if (window.innerWidth > 992) {
+        const magneticButtons = document.querySelectorAll(".btn-primary, .btn-secondary, .social-icon, .social-connect-card");
+        
+        magneticButtons.forEach(button => {
+            button.addEventListener("mousemove", (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                button.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+                button.style.transition = "transform 0.1s ease-out";
+            });
+            
+            button.addEventListener("mouseleave", () => {
+                button.style.transform = "translate(0, 0)";
+                button.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
+            });
+        });
+    }
 });
