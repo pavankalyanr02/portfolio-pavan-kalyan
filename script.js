@@ -313,127 +313,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==========================================================================
-    // 10. EMAILJS INITIALIZATION
-    // ==========================================================================
-    if (typeof emailjs !== "undefined") {
-        emailjs.init({
-            publicKey: "ZhZ3c0JrwvPQOvE5Q"
-        });
-    } else {
-        console.warn("EmailJS SDK failed to load or is undefined.");
-    }
-
-
-    // ==========================================================================
-    // 11. CONTACT FORM HANDLING, VALIDATION & EMAILJS
+    // 10. CONTACT FORM HANDLING (Direct Mailto Link Construction)
     // ==========================================================================
     const contactForm = document.getElementById("contact-form");
-    const formFeedback = document.getElementById("form-feedback");
 
     if (contactForm) {
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const nameEl = document.getElementById("form-name");
-            const emailEl = document.getElementById("form-email");
-            const subjectEl = document.getElementById("form-subject");
-            const messageEl = document.getElementById("form-message");
+            const name = document.getElementById("form-name").value.trim();
+            const subject = document.getElementById("form-subject").value.trim() || "Portfolio Inquiry";
+            const message = document.getElementById("form-message").value.trim();
 
-            const name = nameEl.value.trim();
-            const email = emailEl.value.trim();
-            const subject = subjectEl.value.trim();
-            const message = messageEl.value.trim();
-
-            // Validation
-            if (!name) {
-                showFeedback("Please enter your full name.", "error");
-                nameEl.focus();
-                return;
+            // Formulate standard mailto link
+            let body = `Hello Pavanram,\n\n${message}`;
+            if (name) {
+                body += `\n\nBest regards,\n${name}`;
             }
 
-            if (!email) {
-                showFeedback("Please enter your email address.", "error");
-                emailEl.focus();
-                return;
-            }
+            const mailtoUrl = `mailto:pavankalyanr02@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailRegex.test(email)) {
-                showFeedback("Please enter a valid email address.", "error");
-                emailEl.focus();
-                return;
-            }
-
-            if (!subject) {
-                showFeedback("Please enter a subject.", "error");
-                subjectEl.focus();
-                return;
-            }
-
-            if (!message) {
-                showFeedback("Please enter your message.", "error");
-                messageEl.focus();
-                return;
-            }
-
-            const submitBtn = document.getElementById("btn-send-message");
-            const originalBtnHtml = submitBtn.innerHTML;
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML =
-                'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
-
-            showFeedback("Sending your message...", "loading");
-
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message
-            };
-
-            emailjs.send(
-                "service_7eucwsw",
-                "template_bkgj0wc",
-                templateParams
-            )
-            .then(() => {
-                showFeedback(
-                    "✅ Message sent successfully! I'll get back to you soon.",
-                    "success"
-                );
-
-                contactForm.reset();
-            })
-            .catch((error) => {
-                console.error("EmailJS Error:", error);
-
-                showFeedback(
-                    "❌ Failed to send message. Please try again.",
-                    "error"
-                );
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnHtml;
-            });
+            // Open the default mail client
+            window.location.href = mailtoUrl;
         });
-    }
-
-    function showFeedback(message, type) {
-        if (!formFeedback) return;
-
-        formFeedback.textContent = message;
-        formFeedback.className = "form-feedback visible";
-
-        if (type === "success") {
-            formFeedback.classList.add("success");
-        } else if (type === "error") {
-            formFeedback.classList.add("error");
-        } else if (type === "loading") {
-            formFeedback.classList.add("loading");
-        }
     }
 
     // ==========================================================================
