@@ -4,6 +4,10 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Initialize Lucide Icons if available
+    if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+    }
     
     // ==========================================================================
     // 1. LOADING SCREEN DISMISSAL
