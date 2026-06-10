@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan Kalyan R | Aspiring Software Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Pavan Kalyan R, Aspiring Software Developer, MCA Student, and Java & Python Developer. Explore my software projects, certifications, technical skills, and educational milestones.">
+    <!-- Google Fonts: Space Grotesk (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor Glow -->
+    <div id="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">PK</div>
+            <div class="loading-bar">
+                <div class="loading-bar-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="main-header" id="main-header">
+        <div class="header-container">
+            <a href="#hero" class="logo" id="nav-logo-link">PAVAN.<span>DEV</span></a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#hero" class="nav-link active" id="link-hero">Home</a></li>
+                    <li><a href="#about" class="nav-link" id="link-about">About</a></li>
+                    <li><a href="#education" class="nav-link" id="link-education">Education</a></li>
+                    <li><a href="#skills" class="nav-link" id="link-skills">Skills</a></li>
+                    <li><a href="#projects" class="nav-link" id="link-projects">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link" id="link-certifications">Certificates</a></li>
+                    <li><a href="#contact" class="nav-link" id="link-contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="particles" id="particles-container"></div>
+            <div class="hero-container">
+                <div class="hero-content scroll-reveal fade-in">
+                    <div class="badge">Available for Opportunities</div>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="highlight">Pavan Kalyan R</span>
+                    </h1>
+                    <div class="typewriter-container">
+                        <span class="typewriter-text" id="typewriter"></span><span class="typewriter-cursor">|</span>
+                    </div>
+                    <p class="hero-description">
+                        Dedicated MCA student passionate about building elegant, high-performance applications. Specializing in Java, Python, and modern software architectures.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="mailto:Pavankalyanr02@gmail.com" class="btn btn-primary" id="btn-contact-me">Contact Me</a>
+                        <a href="public/resume/Pavanram_Resume.pdf" download="Pavanram_Resume.pdf" class="btn btn-secondary" id="btn-download-resume">
+                            Download Resume <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="hero-socials">
+                        <a href="https://shorturl.at/c0Wqp" target="_blank" rel="noopener noreferrer" class="social-icon" id="hero-social-linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/pavankalyanr02" target="_blank" rel="noopener noreferrer" class="social-icon" id="hero-social-github" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="mailto:Pavankalyanr02@gmail.com" class="social-icon" id="hero-social-email" aria-label="Email">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down-indicator" id="scroll-down-btn" aria-label="Scroll to About Section">
+                <span class="mouse-icon">
+                    <span class="wheel"></span>
+                </span>
+            </a>
+        </section>
+
+        <!-- Achievements Counter Section -->
+        <section id="achievements" class="achievements-section scroll-reveal fade-in">
+            <div class="section-container">
+                <div class="achievements-grid">
+                    <div class="counter-card glass-card" data-tilt>
+                        <div class="counter-number" data-target="2">0</div>
+                        <div class="counter-label">Core Projects Developed</div>
+                    </div>
+                    <div class="counter-card glass-card" data-tilt>
+                        <div class="counter-number" data-target="2">0</div>
+                        <div class="counter-label">Professional Certifications</div>
+                    </div>
+                    <div class="counter-card glass-card" data-tilt>
+                        <div class="counter-number" data-target="15">0</div>
+                        <div class="counter-label">Technical & Soft Skills</div>
+                    </div>
+                    <div class="counter-card glass-card" data-tilt>
+                        <div class="counter-number-text">MCA</div>
+                        <div class="counter-label">Student at RNSIT</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal slide-up">
+                    <span class="section-subtitle">A Bit About Me</span>
+                    <h2 class="section-title">Who is Pavan Kalyan R?</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-card glass-card scroll-reveal slide-left">
+                        <div class="about-icon-container">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>Passionate Developer</h3>
+                        <p>
+                            Dedicated and fast learner with a strong commitment to teamwork and innovation. Passionate about software development, problem solving, and building impactful applications. Quick to adapt to new technologies and contribute effectively in collaborative environments. Strong leadership skills with a continuous learning mindset.
+                        </p>
+                    </div>
+                    <div class="about-details-grid scroll-reveal slide-right">
+                        <div class="detail-item glass-card">
+                            <div class="detail-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="detail-info">
+                                <h4>Education Pursuing</h4>
+                                <p>Master of Computer Applications (MCA)</p>
+                            </div>
+                        </div>
+                        <div class="detail-item glass-card">
+                            <div class="detail-icon"><i class="fa-solid fa-map-pin"></i></div>
+                            <div class="detail-info">
+                                <h4>Location</h4>
+                                <p>Channapatna, Karnataka, India</p>
+                            </div>
+                        </div>
+                        <div class="detail-item glass-card">
+                            <div class="detail-icon"><i class="fa-solid fa-brain"></i></div>
+                            <div class="detail-info">
+                                <h4>Key Focus</h4>
+                                <p>Data Structures, Algorithms & Java/Python Development</p>
+                            </div>
+                        </div>
+                        <div class="detail-item glass-card">
+                            <div class="detail-icon"><i class="fa-solid fa-briefcase"></i></div>
+                            <div class="detail-info">
+                                <h4>Mindset</h4>
+                                <p>Continuous learning & Adaptability</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal slide-up">
+                    <span class="section-subtitle">Academic Journey</span>
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item left scroll-reveal slide-left">
+                        <div class="timeline-badge"><i class="fa-solid fa-user-graduate"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-date">2025 - 2027</div>
+                            <h3 class="timeline-title">Master of Computer Applications (MCA)</h3>
+                            <h4 class="timeline-institution">RNS Institute of Technology, Bengaluru</h4>
+                            <p class="timeline-description">
+                                Currently pursuing postgraduate studies focused on advanced computer science principles, database systems, software engineering, and web architectures.
+                            </p>
+                            <div class="timeline-grade">CGPA: 8.0</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item right scroll-reveal slide-right">
+                        <div class="timeline-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-date">2021 - 2024</div>
+                            <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+                            <h4 class="timeline-institution">Shanthiniketan College of Science and Management Studies, Ramanagara</h4>
+                            <p class="timeline-description">
+                                Completed undergraduate degree, establishing core programming skills in OOP, Database Management Systems, Operating Systems, and general mathematics.
+                            </p>
+                            <div class="timeline-grade">CGPA: 6.7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal slide-up">
+                    <span class="section-subtitle">Technical Capability</span>
+                    <h2 class="section-title">Skills & Expertise</h2>
+                </div>
+                <div class="skills-grid">
+                    <!-- Programming Languages -->
+                    <div class="skills-category-card glass-card scroll-reveal slide-up">
+                        <h3 class="category-title"><i class="fa-solid fa-terminal"></i> Programming Languages</h3>
+                        <div class="skills-list">
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-java"></i>
+                                <span>Java</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-database"></i>
+                                <span>SQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Technologies -->
+                    <div class="skills-category-card glass-card scroll-reveal slide-up">
+                        <h3 class="category-title"><i class="fa-solid fa-globe"></i> Web Technologies</h3>
+                        <div class="skills-list">
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-react"></i>
+                                <span>React.js</span>
+                            </div>
+                            <div class="skill-badge">
+                                <svg class="skill-icon-svg" viewBox="0 0 180 180" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="90" cy="90" r="90" fill="currentColor"/>
+                                    <path d="M140 135L81.25 59.25H68V120.75H78.5V74.25L130 138.75H140V135Z" fill="white"/>
+                                    <path d="M121.25 59.25H110.75V120.75H121.25V59.25Z" fill="white"/>
+                                </svg>
+                                <span>Next.js</span>
+                            </div>
+                            <div class="skill-badge">
+                                <svg class="skill-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+                                </svg>
+                                <span>Tailwind CSS</span>
+                            </div>
+                            <div class="skill-badge">
+                                <svg class="skill-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v12H12L0 0zM0 12h12l12 12H0V12z"/>
+                                </svg>
+                                <span>Framer Motion</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frameworks & Tools -->
+                    <div class="skills-category-card glass-card scroll-reveal slide-up">
+                        <h3 class="category-title"><i class="fa-solid fa-cubes"></i> Frameworks & Tools</h3>
+                        <div class="skills-list">
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span>Spring Boot</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <span>Hibernate</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-plug"></i>
+                                <span>JDBC</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-git-alt"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-brands fa-github"></i>
+                                <span>GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CS Fundamentals -->
+                    <div class="skills-category-card glass-card scroll-reveal slide-up">
+                        <h3 class="category-title"><i class="fa-solid fa-gears"></i> CS Fundamentals</h3>
+                        <div class="skills-list">
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-sitemap"></i>
+                                <span>Data Structures</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-brain"></i>
+                                <span>Algorithms</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-database"></i>
+                                <span>DBMS</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-cube"></i>
+                                <span>OOP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="skills-category-card glass-card scroll-reveal slide-up">
+                        <h3 class="category-title"><i class="fa-solid fa-users-gear"></i> Soft Skills</h3>
+                        <div class="skills-list">
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-crown"></i>
+                                <span>Leadership</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Teamwork</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <span>Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal slide-up">
+                    <span class="section-subtitle">My Works</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card glass-card scroll-reveal slide-left" data-tilt>
+                        <div class="project-image-area">
+                            <div class="project-image-placeholder">
+                                <i class="fa-solid fa-hand-pointer project-placeholder-icon"></i>
+                                <span class="placeholder-tag">OpenCV & MediaPipe</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">OpenCV</span>
+                                <span class="tag">MediaPipe</span>
+                                <span class="tag">Tkinter</span>
+                            </div>
+                            <h3 class="project-title">Hand Gesture Palm Rotation Controller</h3>
+                            <p class="project-description">
+                                A real-time computer vision application that detects and visualizes hand gestures using OpenCV and MediaPipe. Features smooth palm rotation tracking from 0° to 360° with dynamic GUI visualization.
+                            </p>
+                            <div class="project-features">
+                                <ul>
+                                    <li><i class="fa-solid fa-circle-check"></i> Open Palm & Fist Detection</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Peace Sign & Thumb Up Recognition</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> 0° to 360° Rotation Tracking</li>
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/pavankalyanr02" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-project1-git">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn btn-primary btn-sm" id="btn-project1-demo">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card glass-card scroll-reveal slide-right" data-tilt>
+                        <div class="project-image-area">
+                            <div class="project-image-placeholder">
+                                <i class="fa-solid fa-gamepad project-placeholder-icon"></i>
+                                <span class="placeholder-tag">Pygame & Physics</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Pygame</span>
+                                <span class="tag">OOP</span>
+                            </div>
+                            <h3 class="project-title">Flappy Bird Game</h3>
+                            <p class="project-description">
+                                A 2D arcade-style Flappy Bird game featuring gravity physics, collision detection, obstacle generation, scoring system, smooth animations, sound effects, and engaging gameplay.
+                            </p>
+                            <div class="project-features">
+                                <ul>
+                                    <li><i class="fa-solid fa-circle-check"></i> Physics-Based Gameplay</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Dynamic Obstacle Generation</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Score Tracking & Sound Effects</li>
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/pavankalyanr02" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-project2-git">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn btn-primary btn-sm" id="btn-project2-demo">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal slide-up">
+                    <span class="section-subtitle">Verified Badges</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <div class="certifications-grid">
+                    <!-- Certificate 1 -->
+                    <div class="cert-card glass-card scroll-reveal slide-up">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+                            <div class="cert-meta">
+                                <h3 class="cert-title">Data Science Certification</h3>
+                                <span class="cert-issuer">Industry Certified</span>
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <p class="cert-desc">
+                                Comprehensive training covering mathematics, statistics, Python, SQL, data analysis, visualization, and machine learning.
+                            </p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Math</span>
+                                <span class="cert-skill-tag">Stats</span>
+                                <span class="cert-skill-tag">Python</span>
+                                <span class="cert-skill-tag">SQL</span>
+                                <span class="cert-skill-tag">ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div class="cert-card glass-card scroll-reveal slide-up">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="cert-meta">
+                                <h3 class="cert-title">NASSCOM Certification</h3>
+                                <span class="cert-issuer">Score: 75/100</span>
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <p class="cert-desc">
+                                Validation of future skills including edge computing, cyber security, Internet of Things, big data, and artificial intelligence.
+                            </p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">IoT</span>
+                                <span class="cert-skill-tag">Cyber Security</span>
+                                <span class="cert-skill-tag">Edge Computing</span>
+                                <span class="cert-skill-tag">Big Data</span>
+                                <span class="cert-skill-tag">AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Connect Section -->
+        <section id="social-connect" class="social-connect-section scroll-reveal slide-up">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Digital Footprint</span>
+                    <h2 class="section-title">Connect With Me</h2>
+                </div>
+                <div class="social-connect-grid">
+                    <a href="https://shorturl.at/c0Wqp" target="_blank" rel="noopener noreferrer" class="social-connect-card glass-card linkedin-card">
+                        <div class="social-connect-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                        <div class="social-connect-info">
+                            <h3>LinkedIn</h3>
+                            <p>Professional Network & Career Updates</p>
+                            <span class="social-connect-link">Let's Connect <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/pavankalyanr02" target="_blank" rel="noopener noreferrer" class="social-connect-card glass-card github-card">
+                        <div class="social-connect-icon"><i class="fa-brands fa-github"></i></div>
+                        <div class="social-connect-info">
+                            <h3>GitHub</h3>
+                            <p>Open Source Projects & Codebases</p>
+                            <span class="social-connect-link">Explore Repos <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="mailto:Pavankalyanr02@gmail.com" class="social-connect-card glass-card email-card">
+                        <div class="social-connect-icon"><i class="fa-regular fa-envelope"></i></div>
+                        <div class="social-connect-info">
+                            <h3>Email</h3>
+                            <p>Direct Business & Collaboration Inquiry</p>
+                            <span class="social-connect-link">Send Mail <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal slide-up">
+                    <span class="section-subtitle">Get In Touch</span>
+                    <h2 class="section-title">Contact Me</h2>
+                </div>
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info-card glass-card scroll-reveal slide-left">
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out to me for project collaborations, job opportunities, or just a friendly chat about technology.</p>
+                        
+                        <div class="info-list">
+                            <a href="mailto:Pavankalyanr02@gmail.com" class="info-item">
+                                <div class="info-icon"><i class="fa-regular fa-envelope"></i></div>
+                                <div class="info-text">
+                                    <span>Email Me</span>
+                                    <strong>Pavankalyanr02@gmail.com</strong>
+                                </div>
+                            </a>
+                            <a href="tel:+918618187236" class="info-item">
+                                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="info-text">
+                                    <span>Call Me</span>
+                                    <strong>+91 8618187236</strong>
+                                </div>
+                            </a>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                                <div class="info-text">
+                                    <span>Location</span>
+                                    <strong>Channapatna, Karnataka, India</strong>
+                                </div>
+                            </div>
+                            <a href="https://github.com/pavankalyanr02" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
+                                <div class="info-text">
+                                    <span>GitHub</span>
+                                    <strong>pavankalyanr02 <i class="fa-solid fa-arrow-up-right-from-square small-link-icon"></i></strong>
+                                </div>
+                            </a>
+                            <a href="https://shorturl.at/c0Wqp" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                                <div class="info-text">
+                                    <span>LinkedIn</span>
+                                    <strong>Pavan Kalyan R <i class="fa-solid fa-arrow-up-right-from-square small-link-icon"></i></strong>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container glass-card scroll-reveal slide-right">
+                        <form id="contact-form" novalidate>
+
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    id="form-name"
+                                    name="from_name"
+                                    required
+                                    placeholder=" "
+                                    aria-describedby="form-feedback">
+                                <label for="form-name">Full Name</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    type="email"
+                                    id="form-email"
+                                    name="from_email"
+                                    required
+                                    placeholder=" "
+                                    aria-describedby="form-feedback">
+                                <label for="form-email">Email Address</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    id="form-subject"
+                                    name="subject"
+                                    required
+                                    placeholder=" "
+                                    aria-describedby="form-feedback">
+                                <label for="form-subject">Subject</label>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea
+                                    id="form-message"
+                                    name="message"
+                                    rows="5"
+                                    required
+                                    placeholder=" "
+                                    aria-describedby="form-feedback"></textarea>
+                                <label for="form-message">Your Message</label>
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-block"
+                                id="btn-send-message">
+                                Send Message
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </button>
+
+                            <div
+                                id="form-feedback"
+                                class="form-feedback"
+                                aria-live="polite">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#hero" class="footer-logo">PAVAN.<span>DEV</span></a>
+                <p>Aspiring Software Developer | MCA Student at RNSIT</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h4>Connect</h4>
+                <div class="social-row">
+                    <a href="https://shorturl.at/c0Wqp" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/pavankalyanr02" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:Pavankalyanr02@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pavan Kalyan R. All rights reserved. Crafted with simplicity & excellence.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- EmailJS Browser SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Custom Interaction Script -->
+    <script src="script.js"></script>
+</body>
+</html>
