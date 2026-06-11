@@ -77,16 +77,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==========================================================================
-    // 3. CUSTOM MOUSE GLOW EFFECT (Desktop Only)
+    // 3. CUSTOM MOUSE GLOW EFFECT WITH SPRING PHYSICS (Desktop Only)
     // ==========================================================================
     const cursorGlow = document.getElementById("cursor-glow");
 
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > 1024 && cursorGlow) {
+        let cursorX = 0, cursorY = 0;
+        let targetX = 0, targetY = 0;
+        const springSpeed = 0.08; // smooth spring lag speed
+
         document.addEventListener("mousemove", (e) => {
-            // Smoothly move the glow to follow cursor
-            cursorGlow.style.left = `${e.clientX}px`;
-            cursorGlow.style.top = `${e.clientY}px`;
+            targetX = e.clientX;
+            targetY = e.clientY;
         });
+
+        function animateCursorGlow() {
+            cursorX += (targetX - cursorX) * springSpeed;
+            cursorY += (targetY - cursorY) * springSpeed;
+            cursorGlow.style.left = `${cursorX}px`;
+            cursorGlow.style.top = `${cursorY}px`;
+            requestAnimationFrame(animateCursorGlow);
+        }
+        animateCursorGlow();
 
         // Interactive scales: scale up cursor when hovering over clickable cards/buttons
         const interactables = document.querySelectorAll("a, button, .glass-card, input, textarea");
@@ -377,116 +389,86 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================================================
-    // 13. CUSTOM INTERACTIVE CANVAS PARTICLES
+    // 13. TSPARTICLES PREMIUM BACKGROUND INITIALIZATION
     // ==========================================================================
-    const particleContainer = document.getElementById("particles-container");
-    if (particleContainer) {
-        const canvas = document.createElement("canvas");
-        canvas.style.position = "absolute";
-        canvas.style.top = "0";
-        canvas.style.left = "0";
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.pointerEvents = "none";
-        particleContainer.appendChild(canvas);
-        const ctx = canvas.getContext("2d");
-        let particlesArray = [];
-        let mouse = { x: null, y: null, radius: 120 };
-
-        function setCanvasSize() {
-            canvas.width = particleContainer.offsetWidth;
-            canvas.height = particleContainer.offsetHeight;
-        }
-        setCanvasSize();
-        window.addEventListener("resize", setCanvasSize);
-
-        particleContainer.addEventListener("mousemove", (e) => {
-            const rect = particleContainer.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
-
-        particleContainer.addEventListener("mouseleave", () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 2 + 1;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-                if (mouse.x !== null && mouse.y !== null) {
-                    let dx = this.x - mouse.x;
-                    let dy = this.y - mouse.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        let force = (mouse.radius - distance) / mouse.radius;
-                        let directionX = dx / distance;
-                        let directionY = dy / distance;
-                        this.x += directionX * force * 2;
-                        this.y += directionY * force * 2;
+    if (typeof tsParticles !== "undefined") {
+        tsParticles.load("particles-container", {
+            background: {
+                color: {
+                    value: "transparent",
+                },
+            },
+            fpsLimit: 120,
+            interactivity: {
+                events: {
+                    onClick: {
+                        enable: false,
+                    },
+                    onHover: {
+                        enable: true,
+                        mode: "grab",
+                    },
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        links: {
+                            opacity: 0.5
+                        }
                     }
-                }
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            let numberOfParticles = Math.min(80, Math.floor((canvas.width * canvas.height) / 20000));
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-        initParticles();
-        window.addEventListener("resize", initParticles);
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        function connectParticles() {
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a + 1; b < particlesArray.length; b++) {
-                    let dx = particlesArray[a].x - particlesArray[b].x;
-                    let dy = particlesArray[a].y - particlesArray[b].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 110) {
-                        let opacity = 1.0 - (distance / 110);
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.08})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
+                },
+            },
+            particles: {
+                color: {
+                    value: "#ffffff",
+                },
+                links: {
+                    color: "#ffffff",
+                    distance: 120,
+                    enable: true,
+                    opacity: 0.15,
+                    width: 0.8,
+                },
+                move: {
+                    direction: "none",
+                    enable: true,
+                    outModes: {
+                        default: "bounce",
+                    },
+                    random: true,
+                    speed: 1.2,
+                    straight: false,
+                },
+                number: {
+                    density: {
+                        enable: true,
+                        area: 800,
+                    },
+                    value: 90,
+                },
+                opacity: {
+                    value: { min: 0.2, max: 0.7 },
+                    animation: {
+                        enable: true,
+                        speed: 0.5,
+                        sync: false
                     }
+                },
+                shape: {
+                    type: "circle",
+                },
+                size: {
+                    value: { min: 1, max: 4 },
+                },
+                shadow: {
+                    enable: true,
+                    color: "#ffffff",
+                    blur: 5
                 }
-            }
-        }
-        animateParticles();
+            },
+            detectRetina: true,
+        });
     }
 
     // ==========================================================================
